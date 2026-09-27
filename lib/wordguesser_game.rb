@@ -14,7 +14,7 @@ class WordGuesserGame
 
   def guess(letter)
     
-    # check if letter is from a-zA-Z and not nil
+    #check if letter is from a-zA-Z and not nil
     unless letter.is_a?(String) && letter.match?(/\A[a-zA-Z]\z/)
       raise ArgumentError
     end
