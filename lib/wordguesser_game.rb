@@ -14,13 +14,14 @@ class WordGuesserGame
 
   def guess(letter)
     
-    # check if letter is from a-zA-Z and not nil
+    #check if letter is from a-zA-Z and not nil
     unless letter.is_a?(String) && letter.match?(/\A[a-zA-Z]\z/)
       raise ArgumentError
     end
 
     lowerCaseLetter = letter.downcase
 
+   # check the lower case 
     if word.include?(lowerCaseLetter)
       if(guesses.include?(lowerCaseLetter))
         return false
@@ -37,7 +38,8 @@ class WordGuesserGame
 
   def word_with_guesses
     res = ''
-
+    
+    # check if the letter is in the guesses
     @word.each_char do |letter|
       if @guesses.include?(letter)
         res += letter
@@ -49,6 +51,9 @@ class WordGuesserGame
   end
   
   def check_win_or_lose
+
+    # check if we catch the word, return true if catch, and you have 7 times to try, or continue to
+    # play
     if word_with_guesses == @word
       return :win
     elsif @wrong_guesses.length >= 7
